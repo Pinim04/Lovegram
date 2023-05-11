@@ -27,6 +27,7 @@ app.set(session({
   saveUninitialized: true
 }))
 
+var homeRouter = require('./routes/home');
 var loginRouter = require('./routes/login');
 
 // view engine setup
@@ -52,7 +53,7 @@ app.use(function(req, res, next) {
     next();
   };
 });
-
+app.use('/home', homeRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
