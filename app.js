@@ -1,3 +1,4 @@
+const { log } = require('console');
 var createError = require('http-errors');
 var express = require('express');
 const session = require('express-session');
@@ -21,11 +22,11 @@ liveReloadServer.server.once("connection", () => {
 });
 
 // session management
-app.set(session({
+app.use(session({
   secret: process.env.SECRET_KEY,
   resave: false,
   saveUninitialized: true
-}))
+}));
 
 var homeRouter = require('./routes/home');
 var loginRouter = require('./routes/login');
@@ -51,8 +52,9 @@ app.use(function(req, res, next) {
   } else {
     // User is authenticated, proceed to the next middleware or route handler
     next();
-  };
+  }
 });
+app.use('/', homeRouter);
 app.use('/home', homeRouter);
 
 // catch 404 and forward to error handler
