@@ -17,7 +17,7 @@ Controllare che git si sia installato:
 scrivere su un terminale -> ```git -v```
 
 # Inizializzare il progetto
-Aprire la cartella del progetto su un terminale e scrivere: ```npm init```
+Aprire la cartella del progetto su un terminale e scrivere: ```npm i```
 
 # Accendere il server
 Nello stesso terminale scrivere: ```npm start```
