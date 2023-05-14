@@ -1,0 +1,31 @@
+ body {
+  background-image: url("/Images/back5.jpg");
+}
+
+input[type="submit"] {
+ background-color: #ff2a6d;
+  color: #fff;
+  border: none;
+  padding: 16px 24px;
+ border-radius: 8px;
+ cursor: pointer;
+  width: 100%;
+  margin-top: 40px;
+ }
+
+ label{
+  color: #401244;
+ }
+
+ .titolo{
+  font-size: 48px;
+  font-weight: bold;
+  color: #401244;
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  letter-spacing: 2px;
+  line-height: 1.2;
+  font-family: 'Montserrat', sans-serif;
+ }
