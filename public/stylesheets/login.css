@@ -1,0 +1,61 @@
+body {
+  background-color: #ffffff;
+  font-family: Arial, sans-serif;
+  background-image: url("/images/back5.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  width: 30rem;
+  height: 20rem;
+  margin: 0 auto;
+}
+
+.container {
+  width: 30vw;
+  padding: 40px;
+  position: relative;
+  border-radius: 10px;
+}
+
+h1 {
+  color: #ff2a6d;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  text-shadow: #ff2a6d;
+}  
+
+button[type="submit"] {
+  background-color: #c49ca9;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 20px;
+  cursor: pointer;
+  width: 100%;
+}
+
+button[type="submit"]:hover {
+  background-color: #ff2a6d;
+}
+
+.footer {
+  text-align: center;
+  color: #701240;
+  margin-top: 20px;
+}

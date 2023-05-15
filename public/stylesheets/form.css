@@ -1,0 +1,204 @@
+body {
+    background-position: center center;
+    color: #401244;
+  }
+  
+  form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 40px;
+    border: 1px solid #fff;
+    border-radius: 8px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    font-size: 48px;
+    font-weight: bold;
+    font-style: italic;
+    text-align: center;
+    margin-bottom: 40px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  }
+  
+  label {
+    display: block;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  select,
+  textarea {
+    display: block;
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 8px;
+    margin-bottom: 24px;
+    background-color: rgba(255, 255, 255, 0.8);
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.03);
+    transition: all 0.2s ease-in-out;
+  }
+  
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  input[type="password"]:focus,
+  select:focus,
+  textarea:focus {
+    outline: none;
+    box-shadow: 0 2px 0 #ff2a6d;
+  }
+  
+  select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%23969696' d='M4.708 6.292a1 1 0 0 0-1.414 1.414l3.298 3.298a1 1 0 0 0 1.414 0l3.298-3.298a1 1 0 1 0-1.414-1.414L8 8.586 4.708 5.292z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 28px;
+  }
+  
+  input[type="submit"] {
+    background-color: #ff2a6d;
+    color: #fff;
+    border: none;
+    padding: 16px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  /* Style for the date input */
+  input[type="date"] {
+    font-family: inherit;
+    font-size: 20px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+    outline: none;
+    background-color: #f6f6f6;
+    color: #333;
+  }
+  
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    transform: scale(1.2);
+    margin-right: -10px;
+  }
+  
+  /* Style for the date picker */
+  .date-picker {
+    position: relative;
+    display: inline-block;
+    font-size: 20px;
+  }
+  
+  .date-picker__input {
+    width: 100%;
+  }
+  
+  .date-picker__icon {
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+  
+  .date-picker__icon svg {
+    width: 1.8rem;
+    height: 1.8rem;
+    fill: #999;
+    transition: fill 0.2s ease-in-out;
+  }
+  
+  .date-picker__icon:hover svg {
+    fill: #333;
+  }
+  
+  .date-picker__calendar {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    z-index: 1;
+    width: 25rem;
+    max-width: 100%;
+    padding: 1rem;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+    display: none;
+  }
+  
+  .date-picker__calendar.active {
+    display: block;
+  }
+  
+  .date-picker__calendar__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+  
+  .date-picker__calendar__month {
+    font-size: 1.4rem;
+    font-weight: bold;
+  }
+  
+  .date-picker__calendar__button {
+    font-size: 1.4rem;
+    font-weight: bold;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .date-picker__calendar__button:hover {
+    text-decoration: underline;
+  }
+  
+  .date-picker__calendar__table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0.5rem;
+  }
+  
+  .date-picker__calendar__table th,
+  .date-picker__calendar__table td {
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  .date-picker__calendar__table th {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    color: #999;
+  }
+  
+  .date-picker__calendar__table td {
+    font-size: 1.4rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .date-picker__calendar__table td:not(.disabled):hover {
+    background-color: #f6f6f6;
+  }
+  
+  .date-picker__calendar__table td.disabled {
+    color: #999;
+    cursor: not-allowed;
+  }
+  
