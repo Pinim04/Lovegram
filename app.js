@@ -1,8 +1,15 @@
+const { log } = require('console');
 var createError = require('http-errors');
 var express = require('express');
+const session = require('express-session');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+
+require('dotenv').config();
+
+// generarte express app
+var app = express();
 
 //live reload
 var livereload = require("livereload");
@@ -14,12 +21,15 @@ liveReloadServer.server.once("connection", () => {
   }, 100);
 });
 
+// session management
+app.use(session({
+  secret: process.env.SECRET_KEY,
+  resave: false,
+  saveUninitialized: true
+}));
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var homeRouter = require('./routes/home');
 var loginRouter = require('./routes/login');
-
-var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -34,9 +44,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 //connec reloader to middleware
 app.use(connectLiveReload());
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
 app.use('/login', loginRouter);
+app.use(function(req, res, next) {
+  if (!req.session.user) {
+    // User is not authenticated, redirect to the login page
+    res.redirect('/login');
+  } else {
+    // User is authenticated, proceed to the next middleware or route handler
+    next();
+  }
+});
+app.use('/', homeRouter);
+app.use('/home', homeRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
