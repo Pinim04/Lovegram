@@ -1,23 +1,10 @@
- body {
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f7f7f7;
   background-image: url("/Images/back5.jpg");
 }
 
-input[type="submit"] {
- background-color: #ff2a6d;
-  color: #fff;
-  border: none;
-  padding: 16px 24px;
- border-radius: 8px;
- cursor: pointer;
-  width: 100%;
-  margin-top: 40px;
- }
-
- label{
-  color: #401244;
- }
-
- .titolo{
+.titolo{
   font-size: 48px;
   font-weight: bold;
   color: #401244;
@@ -29,3 +16,52 @@ input[type="submit"] {
   line-height: 1.2;
   font-family: 'Montserrat', sans-serif;
  }
+
+.container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 0;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+input[type="text"], input[type="email"], input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #ff2a6d;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
