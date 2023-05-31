@@ -47,7 +47,7 @@ app.use(connectLiveReload());
 
 app.use('/login', loginRouter);
 app.use(function(req, res, next) {
-  if (!req.session.user) {
+  if (!req.session.usr) {
     // User is not authenticated, redirect to the login page
     res.redirect('/login');
   } else {

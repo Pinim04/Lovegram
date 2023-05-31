@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 router.get('/', function(req, res, next) {
-  if (req.session.user) {
+  if (req.session.usr) {
     // User is not authenticated, redirect to the login page
     res.redirect('/home');
   } else {
@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function(req, res, next) {
   const username = req.body.usr;
-  req.session.user = username;
+  req.session.usr = username;
   res.redirect('/home');
 });
 

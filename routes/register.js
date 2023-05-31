@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
 
 // router.post('/', function(req, res, next) {
 //   const username = req.body.usr;
-//   req.session.user = username;
+//   req.session.usr = username;
 //   res.redirect('/home');
 // });
 
