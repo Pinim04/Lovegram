@@ -10,7 +10,14 @@
       <div class="titolo">Registrati</div>
       <img src="Images/sfondoreg.jpg" alt="Immagine di registrazione" id="preview" src="#" />
       <input type="file" id="image-input" accept="image/*" onchange="previewImage(event)" class="immagine">
-      <button onclick="selectFile()" class="bottone">+</button>
+      <button onclick="selectFile()" class="bottone" id="bottone">+</button>
+      <script>
+        var bottone = document.getElementById("bottone");
+        bottone.addEventListener("click", function()
+        {
+          bottone.classList.add("hidden");
+        });
+      </script>
       <div class="page active" id="page1">
         <form>
           <label for="nome">Username:</label>
