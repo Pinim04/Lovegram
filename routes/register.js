@@ -7,16 +7,31 @@ router.get('/', function(req, res, next) {
 );
 
  router.post('/insert', function(req, res, next) {
-  const qCtrl = 'SELECT * FROM Utente WHERE Username = "leocove21";'
-  const searchedName = form.name;
-  if(queryCtrl == insertedName)
-  {
-    console.write("Utente già presente, si prega di inserire un username differente!");
-  }
-  else
-  {
-    const insertName = "INSERT INTO Utente (Username, Email, Pwd, Nome, Cognome, Sesso, Ddn, IdFoto, IdCitta) VALUES ('nuovo_utente', 'nuovo_utente@example.com', 'password123', 'Nuovo', 'Utente', 'Altro', '1990-01-01', 1, 1);"
-  }
+  const mysql = require('mysql');
+
+  const connection = mysql.createConnection({
+    host: 3000,
+    user: "TheRealCovez",
+    password: "Leocove21",
+    database: "Lovegram"
+  });
+
+  app.post('/submit', (req, res) => {
+    const username = req.body.username;
+
+    const qInsert = "INSERT INTO Utente (Username) VALUES ('${username}')";
+    
+    connection.qInsert(qInsert, (error, results) => {
+      if(error) {
+        console.error('Error inserting user: ', error);
+        return res.status(500).send('Error inserting user');
+      }
+
+      return res.status(200).send('User insert successfully');
+    });
+  });
+
+  
 });
 
 module.exports = router;
