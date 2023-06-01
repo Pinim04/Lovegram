@@ -11,64 +11,39 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-  const username = req.body.usr;
-  req.session.user = username;
-  res.redirect('/home');
-});
-
-router.post('/validate', function(req, res, next) {
-  //Esecuzione dei controlli per la validazione
-  if(!username || !password)
-    return res.status(400).json({ error: 'Username e password richiesti.' });
   
-    //Query per ricercare l'username e la password all'interno del databasse
-    pool.query("SELECT Username, Pwd FROM Utente WHERE Username = ? AND Pwd = ?", function(err, rows, fields){
-      if (err) {
-        console.error('Errore nella query:', err);
-        return res.status(500).json({ error: 'Errore del server interno.' });
-      }
-    })
-
-    const user = results[0];
-
-    //Controllo se l'utente esiste e se la password coincida
-    if(!user || user.password != password)
-      return res.status(401).json({ error: 'Nome o password non validi.' });
-
-    //Dopo la validazione dei dati dell'utente, invio un messaggio di successo
-    res.json({ message : 'Login effettuato.' });
-    
-
-
-});
-
-/*
-  // Perform validation checks
+  //definizione varaibili username e password
+  const username = req.body.username;
+  const password = req.body.password;
+  
+  // Esecuzione dei controlli per la validazione
   if (!username || !password) {
-    return res.status(400).json({ error: 'Username and password are required.' });
+    //window.alert("User pwd rischiesti");
   }
 
-  // Query the database to find the user
-  const query = 'SELECT * FROM users WHERE username = ?';
-  pool.query(query, [username], (err, results) => {
+  
+  // Query per ricercare l'username e la password all'interno del database
+  const query = "SELECT Username, Pwd FROM Utente WHERE Username = " + pool.escape(username) + ";";
+  
+  console.log("dasasd");
+  pool.query(query, [username, password], function(err, rows, fields) {
     if (err) {
-      console.error('Error querying the database:', err);
-      return res.status(500).json({ error: 'Internal server error.' });
+      console.error('Errore nella query:', err);
+      //window.alert("Errore servizio interno");
     }
 
-    const user = results[0];
+    const user = rows[0];
 
-    // Check if the user exists and if the password matches
-    if (!user || user.password !== password) {
-      return res.status(401).json({ error: 'Invalid username or password.' });
+    // Controllo se l'utente esiste e se la password coincide
+    if (!user || user.Pwd !== password) {
+      //window.alert("non validi")
     }
 
-    // User data is valid, initiate a session or generate an authentication token
-    // For simplicity, we'll send a success message here
-    res.json({ message: 'Login successful.' });
+    // Dopo la validazione dei dati dell'utente, reindirizzo l'utente alla pagina di home
+    req.session.user = username;
+    //res.redirect('/home');
+    
   });
-});*/
-
-
+});
 
 module.exports = router;

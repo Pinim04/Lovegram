@@ -5,19 +5,18 @@ const session = require('express-session');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const mysql = require('mysql');
+const mysql = require('mysql2');
 
 require('dotenv').config();
 
 //Manage Database
-const connection = mysql.createConnection({
+const pool = mysql.createPool({
   database: process.env.DB_NAME,
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: ''
 })
 
-connection.connect()
 
 // generarte express app
 var app = express();
