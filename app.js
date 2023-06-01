@@ -31,6 +31,7 @@ app.use(session({
 var homeRouter = require('./routes/home');
 var loginRouter = require('./routes/login');
 var registerRouter = require('./routes/register');
+var chatRouter = require('./routes/chat');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -58,6 +59,7 @@ app.use(function(req, res, next) {
 app.use('/', homeRouter);
 app.use('/home', homeRouter);
 app.use('/register', registerRouter);
+app.use('/chat', chatRouter); 
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

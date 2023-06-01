@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chat</title>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/chat.css" />
+</head>
+<body>
+  <div class="chat-container">
+    <div class="chat-wrapper">
+      <div class="chat-header">
+        <div class="chat-title">
+          Chat
+        </div>
+      </div>
+      <div class="chat-messages">
+        <div class="message received">
+          <div class="avatar"></div>
+          <div class="content">
+            <div class="sender">Alice</div>
+            <div class="timestamp">01/06/2023 10:00 AM</div>
+            <p>Hello!</p>
+          </div>
+        </div>
+        <div class="message sent">
+          <div class="avatar"></div>
+          <div class="content">
+            <div class="sender">You</div>
+            <div class="timestamp">01/06/2023 10:01 AM</div>
+            <p>Hi, how are you?</p>
+          </div>
+        </div>
+        <!-- Aggiungi ulteriori messaggi qui -->
+      </div>
+      <div class="input-container">
+        <input type="text" id="message-input" placeholder="Type your message...">
+        <button onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function sendMessage() {
+      var input = document.getElementById("message-input");
+      var message = input.value.trim();
+
+      if (message !== "") {
+        var container = document.querySelector(".chat-messages");
+        var newMessage = document.createElement("div");
+        newMessage.className = "message sent";
+        newMessage.innerHTML = `
+          <div class="avatar"></div>
+          <div class="content">
+            <div class="sender">You</div>
+            <div class="timestamp">${getCurrentTime()}</div>
+            <p>${message}</p>
+          </div>`;
+        container.appendChild(newMessage);
+        input.value = "";
+        container.scrollTop = container.scrollHeight;
+      }
+    }
+
+    function getCurrentTime() {
+      var now = new Date();
+      var time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      var date = now.toLocaleDateString();
+      return date + ' ' + time;
+    }
+  </script>
+</body>
+</html>
