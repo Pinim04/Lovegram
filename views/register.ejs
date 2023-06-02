@@ -8,8 +8,16 @@
   <body> 
     <div class="container">
       <div class="titolo">Registrati</div>
-      <img src="Images/sfondoreg.jpg" alt="Immagine di registrazione" />
-      
+      <img src="Images/sfondoreg.jpg" alt="Immagine di registrazione" id="preview" src="#" />
+      <input type="file" id="image-input" accept="image/*" onchange="previewImage(event)" class="immagine">
+      <button onclick="selectFile()" class="bottone" id="bottone">+</button>
+      <script>
+        var bottone = document.getElementById("bottone");
+        bottone.addEventListener("click", function()
+        {
+          bottone.classList.add("hidden");
+        });
+      </script>
       <div class="page active" id="page1">
         <form>
           <label for="nome">Username:</label>
@@ -96,6 +104,21 @@
         currentPage = page;
         document.getElementById(`page${currentPage}`).classList.add('active');
       }
+
+      function selectFile() {
+        document.getElementById('image-input').click();
+      }
+
+      document.getElementById('image-input').addEventListener('change', function(e) {
+      var file = e.target.files[0];
+      var reader = new FileReader();
+
+      reader.onload = function(e) {
+        document.getElementById('preview').src = e.target.result;
+      }
+
+      reader.readAsDataURL(file);
+      });
     </script>
   </body>
 </html>
