@@ -3,27 +3,31 @@
   <head>
     <title>Lovegram - Login</title>
     <!--Collegamento ai file CSS-->
-    <link href="stylesheets/login.css" rel="stylesheet">
-    <link href="stylesheets/form.css" rel="stylesheet">
+    <link href="stylesheets/login.css" rel="stylesheet" />
+    <link href="stylesheets/form.css" rel="stylesheet" />
   </head>
   <body>
     <div class="container">
       <!--Inserimento del logo-->
       <div class="logo">
-        <img src="images/logo/1.svg" class="logo">
+        <img src="images/logo/1.svg" class="logo" />
       </div>
       <!--Inizio form-->
       <form action="/login" method="post">
         <!--Sezione inserimento USERNAME-->
         <div class="form-group">
           <label for="usr">Username</label>
-          <input type="text" id="username" name="usr" required>
+          <input type="text" id="username" name="usr" required />
         </div>
         <!--Sezione inserimento PASSWORD-->
         <div class="form-group">
           <label for="pswd">Password</label>
-          <input type="password" id="password" name="pswd" required>
+          <input type="password" id="password" name="pswd" required />
         </div>
+        <!-- Error message placeholder -->
+        <% if (errorMessage) { %>
+        <p class="error-message"><%= errorMessage %></p>
+        <% } %>
         <!--Bottone submit per inviare i dati alla pagina di ricezione-->
         <div class="form-group">
           <button type="submit">Accedi</button>
