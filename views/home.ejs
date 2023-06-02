@@ -2,11 +2,16 @@
 <html>
   <head>
     <link rel="stylesheet" type="text/css" href="/stylesheets/home.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.css"
+    />
   </head>
   <body>
     <header>
       <div class="logo">
-        <img src="/images/logo.png" alt="Logo">
+        <img src="/images/logo/1.svg" alt="Logo" />
       </div>
       <div class="icons">
         <div class="user-icon">
@@ -19,25 +24,31 @@
     </header>
     <main>
       <div class="carousel">
-        <button class="prev-btn">&lt;</button>
-        <div class="cards">
-          <div class="card">Card 1</div>
-          <div class="card">Card 1</div>
-          <div class="card center-card">Card 3</div>  
-          <div class="card">Card 1</div>
-          <div class="card">Card 1</div>
-          <div class="card">Card 1</div>
-          <div class="card">Card 2</div>
-          <div class="card">Card 4</div>
-          <div class="card">Card 4</div>
-          <div class="card">Card 4</div>
-          <div class="card">Card 4</div>
-          <div class="card">Card 4</div>
-          <div class="card">Card 5</div>
-        </div>
-        <button class="next-btn">&gt;</button>
-      </div>     
+        <div class="mycard"><div style="background-image: url('/Images/logo.png')"></div></div>
+        <div class="mycard"><div style="background-image: url('/Images/logo.png')"></div></div>
+        <div class="mycard"><div style="background-image: url('/Images/logo.png')"></div></div>
+        <div class="mycard"><div style="background-image: url('/Images/logo.png')"></div></div>
+        <div class="mycard"><div style="background-image: url('/Images/logo.png')"></div></div>
+        <div class="mycard"><div style="background-image: url('/Images/logo.png')"></div></div>
+        <div class="mycard"><div style="background-image: url('/Images/logo.png')"></div></div>
+        <div class="mycard"><div style="background-image: url('/Images/logo.png')"></div></div>
+        <div class="mycard"><div style="background-image: url('/Images/logo.png')"></div></div>
+        <div class="mycard"><div style="background-image: url('/Images/logo.png')"></div></div>
+      </div>
     </main>
-    <script src="/javascripts/cardAnimator.js"></script>
+    <!-- <script src="/javascripts/cardAnimator.js"></script> -->
+    <script
+      type="text/javascript"
+      src="//code.jquery.com/jquery-1.11.0.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="//code.jquery.com/jquery-migrate-1.2.1.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js"
+    ></script>
+    <script type="text/javascript" src="/javascripts/carousel.js"></script>
   </body>
 </html>

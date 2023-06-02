@@ -1,14 +1,8 @@
-/* Reset default styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 /* Set full width and height for the page */
 html, body {
   width: 100%;
   height: 100%;
+  background-color: #ffb1ee;
 }
 
 /* Header styles */
@@ -20,6 +14,33 @@ header {
   top: 10px;
   left: 10px;
   right: 10px;
+}
+
+/* Main content styles */
+main {
+  position: relative;
+  height: 100vh;
+}
+
+.carousel {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+}
+
+.slick-slide div {
+  /* background-color: white; */
+  max-height: 90%;
+  max-width: 300px;
+  min-height: 600px;
+  
+  image-rendering: optimizeQuality;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
 }
 
 .logo {
@@ -36,70 +57,4 @@ header {
 
 .matching-icon {
     /* Add styles for the matching icon */
-}
-
-/* Main content styles */
-main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh; /* Adjust the height as needed */
-}
-
-.carousel {
-  position: relative;
-  width: 90%;
-  overflow: hidden; 
-}
-
-.cards {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-}
-
-.card {
-  flex: 0 0 400px;
-  height: 80%;
-  background-color: #f1f1f1;
-  margin: 0 10px;
-  text-align: center;
-  line-height: 300px;
-  font-size: 24px;
-}
-
-.center-card {
-    transform: scale(1.2);
-}
-
-.prev-btn,
-.next-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  padding: 10px;
-  font-size: 24px;
-  background-color: transparent;
-  border: none;
-  color: #000;
-  cursor: pointer;
-}
-
-.prev-btn {
-  left: 10px;
-}
-
-.next-btn {
-  right: 10px;
-}    
-
-.card:hover {
-  z-index: 1;
-}
-
-.card:not(:hover) {
-  opacity: 0.7;
-}
-
-.carousel.hovered .card:not(:hover) {
-  opacity: 0.5;
 }
