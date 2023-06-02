@@ -22,6 +22,7 @@
         <form>
           <label for="nome">Username:</label>
           <input type="text" id="username" maxlength="25" minlength="2" required>
+          <div id="error2" class="hidden">campo non valido</div>
           <button type="button" onclick="procedi(2)">Avanti</button>
         </form>
       </div>
@@ -30,6 +31,7 @@
         <form>
           <label for="cognome">Nome:</label>
           <input type="text" id="nome" maxlength="25" minlength="2" required>
+          <div id="error3" class="hidden">campo non valido</div>
           <button type="button" onclick="procedi(3)">Avanti</button>
         </form>
       </div>
@@ -38,6 +40,7 @@
         <form>
           <label for="data-nascita">Cognome</label>
           <input type="text" id="cognome" maxlength="25" minlength="2" required>
+          <div id="error4" class="hidden">campo non valido</div>
           <button type="button" onclick="procedi(4)">Avanti</button>
         </form>
       </div>
@@ -46,6 +49,7 @@
         <form>
           <label for="email">Email:</label>
           <input type="email" id="email" maxlength="30" min="10" required>
+          <div id="error5" class="hidden">campo non valido</div>
           <button type="button" onclick="procedi(5)">Avanti</button>
         </form>
       </div>
@@ -54,6 +58,7 @@
         <form>
           <label for="password">Password:</label>
           <input type="password" id="password" maxlength="30" minlength="5" required>
+          <div id="error6" class="hidden">campo non valido</div>
           <button type="button" onclick="procedi(6)">Avanti</button>
         </form>
       </div>
@@ -62,6 +67,7 @@
         <form>
           <label for="password">Conferma Password:</label>
           <input type="password" id="conferma-password" maxlength="30" minlength="5" required>
+          <div id="error7" class="hidden">campo non valido</div>
           <button type="button" onclick="procedi(7)">Avanti</button>
         </form>
       </div>
@@ -82,6 +88,7 @@
         <form>
           <label for="citta">Città:</label>
           <input type="text" id="citta" maxlength="30" minlength="5" required>
+          <div id="error9" class="hidden">campo non valido</div>
           <button type="button" onclick="procedi(9)">Avanti</button>
         </form>
       </div>
@@ -103,19 +110,73 @@
         switch (page) {
           case 2:
             var username = document.getElementById("username").value;
-            if (username.length < 2 || username.length > 30) {
-              window.alert("i campi non sono validi");
-              break;
+            if (username.length <= 2 || username.length >= 25) {
+              var error2 = document.getElementById("error2");
+              error2.classList.remove("hidden")
             } else{
               vaiavanti(page);
             }
+            break;
           case 3:
             var nome = document.getElementById("nome").value;
-            if (nome.length < 2 || nome.length > 30) {
-              window.alert("i campi non sono validi");
+            if (nome.length <= 2 || nome.length >= 25) {
+              var error3 = document.getElementById("error3");
+              error3.classList.remove("hidden");
+            } else{
+              vaiavanti(page);
             }
-              default:
             break;
+            case 4:
+            var cognome = document.getElementById("cognome").value;
+            if (cognome.length <= 2 || cognome.length >= 25) {
+              var error4 = document.getElementById("error4");
+              error4.classList.remove("hidden");
+            } else{
+              vaiavanti(page);
+            }
+            break;
+            case 5:
+            var email = document.getElementById("email").value;
+            if (email.length <= 10 || email.length >= 30) {
+              var error5 = document.getElementById("error5");
+              error5.classList.remove("hidden");
+            } else{
+              vaiavanti(page);
+            }
+            break;
+            case 6:
+            var password = document.getElementById("password").value;
+            if (password.length <= 5 || password.length >= 30) {
+              var error6 = document.getElementById("error6");
+              error6.classList.remove("hidden");
+            } else{
+              vaiavanti(page);
+            }
+            break;
+            case 7:
+            var password  = document.getElementById("password").value;
+            var cpassword = document.getElementById("conferma-password").value;
+            if (cpassword.length < 5 || cpassword.length > 30 || password != cpassword) {
+                var error7 = document.getElementById("error7");
+                error7.classList.remove("hidden"); 
+            } else{
+              vaiavanti(page);
+            }
+            break;
+            case 8:
+              vaiavanti(page);
+            break;
+            case 9:
+            var citta = document.getElementById("citta").value;
+            if (citta.length <= 5 || citta.length >= 30) {
+              var error9 = document.getElementById("error9");
+              error9.hidden.remove("hidden");
+            } else{
+              vaiavanti(page);
+            }
+            break;
+              default:
+            break; 
         }        
       }
 
@@ -139,17 +200,6 @@
 
       reader.readAsDataURL(file);
       });
-
-      var username = document.getElementById("username").value;
-      var nome = document.getElementById("nome").value;
-      var cognome = document.getElementById("cognome").value;
-      var email = document.getElementById("email").value;
-      var password = document.getElementById("password").value;
-      var cpassword = document.getElementById("conferma-password").value;
-      var sesso = document.getElementById("sesso").value;
-      var citta = document.getElementById("citta").value;
-      var dnascita = document.getElementById("data.nascita").value;
-
     </script>
   </body>
 </html>
