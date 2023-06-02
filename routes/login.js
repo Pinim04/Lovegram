@@ -14,12 +14,12 @@ const conn = mysql.createConnection({
 });
 
 router.get("/", function (req, res, next) {
-  let errorMessage = '';
+  let errorMessage = "";
   if (req.session.user) {
     // L'utente non è autenticato, ritorna alla pagina Home
     res.redirect("/home");
   } else {
-    res.render("login", { title: "Login",  errorMessage: null });
+    res.render("login", { title: "Login", errorMessage: null });
   }
 });
 
@@ -48,7 +48,7 @@ router.post("/", function (req, res, next) {
     // Controllo se l'utente esiste e se la password coincide
     if (!user || user.Pwd !== password) {
       console.error("Credenziali errate");
-      return res.render('login', { errorMessage: "Credenziali errate" });
+      return res.render("login", { errorMessage: "Credenziali errate" });
     } else {
       // Dopo la validazione dei dati dell'utente, reindirizzo l'utente alla pagina di home
       req.session.user = username;
