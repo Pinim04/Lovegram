@@ -106,4 +106,7 @@ input[type="submit"] {
   padding: 16px 24px;
   border-radius: 8px;
   cursor: pointer;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
 }
