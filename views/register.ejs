@@ -2,78 +2,74 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/form.css' />
-    <link rel='stylesheet' href='/stylesheets/formRegister.css' />
+    <link rel="stylesheet" href="/stylesheets/form.css" />
+    <link rel="stylesheet" href="/stylesheets/formRegister.css" />
   </head>
-  <body> 
+  <body>
     <div class="container">
       <div class="titolo">Registrati</div>
-      <img src="Images/sfondoreg.jpg" alt="Immagine di registrazione" id="preview" src="#" />
-      <input type="file" id="image-input" accept="image/*" onchange="previewImage(event)" class="immagine">
-      <button onclick="selectFile()" class="bottone" id="bottone">+</button>
-      <script>
-        var bottone = document.getElementById("bottone");
-        bottone.addEventListener("click", function()
-        {
-          bottone.classList.add("hidden");
-        });
-      </script>
-      <div class="page active" id="page1">
-        <form>
+      <img
+        src="Images/sfondoreg.jpg"
+        alt="Immagine di registrazione"
+        id="preview"
+        src="#" />
+      <form action="/register" method="POST">
+        <input
+          type="file"
+          id="image-input"
+          accept="image/*"
+          onchange="previewImage(event)"
+          class="immagine" />
+        <button onclick="selectFile()" class="bottone" id="bottone">+</button>
+        <script>
+          var bottone = document.getElementById("bottone");
+          bottone.addEventListener("click", function () {
+            bottone.classList.add("hidden");
+          });
+        </script>
+        <div class="page active" id="page1">
           <label for="nome">Username:</label>
           <input type="text" id="username" maxlength="25" minlength="2" required>
           <div id="error2" class="hidden">campo non valido</div>
           <button type="button" onclick="procedi(2)">Avanti</button>
-        </form>
-      </div>
-      
-      <div class="page" id="page2">
-        <form>
+        </div>
+
+        <div class="page" id="page2">
           <label for="cognome">Nome:</label>
           <input type="text" id="nome" maxlength="25" minlength="2" required>
           <div id="error3" class="hidden">campo non valido</div>
           <button type="button" onclick="procedi(3)">Avanti</button>
-        </form>
-      </div>
+        </div>
       
-      <div class="page" id="page3">
-        <form>
+        <div class="page" id="page3">
           <label for="data-nascita">Cognome</label>
           <input type="text" id="cognome" maxlength="25" minlength="2" required>
           <div id="error4" class="hidden">campo non valido</div>
           <button type="button" onclick="procedi(4)">Avanti</button>
-        </form>
-      </div>
-      
-      <div class="page" id="page4">
-        <form>
+        </div>
+
+        <div class="page" id="page4">
           <label for="email">Email:</label>
           <input type="email" id="email" maxlength="30" min="10" required>
           <div id="error5" class="hidden">campo non valido</div>
           <button type="button" onclick="procedi(5)">Avanti</button>
-        </form>
-      </div>
+        </div>
 
-      <div class="page" id="page5">
-        <form>
+        <div class="page" id="page5">
           <label for="password">Password:</label>
           <input type="password" id="password" maxlength="30" minlength="5" required>
           <div id="error6" class="hidden">campo non valido</div>
           <button type="button" onclick="procedi(6)">Avanti</button>
-        </form>
-      </div>
-      
-      <div class="page" id="page6">
-        <form>
+        </div>
+
+        <div class="page" id="page6">
           <label for="password">Conferma Password:</label>
           <input type="password" id="conferma-password" maxlength="30" minlength="5" required>
           <div id="error7" class="hidden">campo non valido</div>
           <button type="button" onclick="procedi(7)">Avanti</button>
-        </form>
-      </div>
+        </div>
 
-      <div class="page" id="page7">
-        <form>
+        <div class="page" id="page7">
           <label for="sesso">Sesso:</label>
           <select id="sesso" name="sesso" required>
             <option value="maschio">Maschio</option>
@@ -81,31 +77,26 @@
             <option value="altro">Altro</option>
           </select>
           <button type="button" onclick="procedi(8)">Avanti</button>
-        </form>
-      </div>
+        </div>
 
-      <div class="page" id="page8">
-        <form>
+        <div class="page" id="page8">
           <label for="citta">Città:</label>
           <input type="text" id="citta" maxlength="30" minlength="5" required>
           <div id="error9" class="hidden">campo non valido</div>
           <button type="button" onclick="procedi(9)">Avanti</button>
-        </form>
-      </div>
+        </div>
 
-      <div class="page" id="page9">
-        <form>
-          <label for="citta">Città:</label>
+        <div class="page" id="page9">
+          <label for="ddn">Data di nascita:</label>
           <input type="date" id="data-nascita" min="1970-01-01" max="2023-12-31" required>
-          <button type="submit">Registrati</button>
-        </form>
-      </div>
-
+          <input type="submit" value="Registrati" />
+        </div>
+      </form>
     </div>
-    
+
     <script>
       let currentPage = 1;
-      
+
       function procedi(page) {
         switch (page) {
           case 2:
@@ -187,19 +178,21 @@
         }
 
       function selectFile() {
-        document.getElementById('image-input').click();
+        document.getElementById("image-input").click();
       }
 
-      document.getElementById('image-input').addEventListener('change', function(e) {
-      var file = e.target.files[0];
-      var reader = new FileReader();
+      document
+        .getElementById("image-input")
+        .addEventListener("change", function (e) {
+          var file = e.target.files[0];
+          var reader = new FileReader();
 
-      reader.onload = function(e) {
-        document.getElementById('preview').src = e.target.result;
-      }
+          reader.onload = function (e) {
+            document.getElementById("preview").src = e.target.result;
+          };
 
-      reader.readAsDataURL(file);
-      });
+          reader.readAsDataURL(file);
+        });
     </script>
   </body>
 </html>

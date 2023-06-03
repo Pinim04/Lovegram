@@ -1,37 +1,70 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
 
-router.get('/', function(req, res, next) {
-    res.render('register', { title: 'Registrati' });
-  }
-);
+const mysql = require("mysql2");
+require("dotenv").config();
 
- router.post('/insert', function(req, res, next) {
-  const mysql = require('mysql');
+//Manage Database
+const conn = mysql.createConnection({
+  database: process.env.DB_NAME,
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: "",
+});
 
-  const connection = mysql.createConnection({
-    host: 3000,
-    user: "TheRealCovez",
-    password: "Leocove21",
-    database: "Lovegram"
+router.get("/", function (req, res, next) {
+  res.render("register", { title: "Registrati" });
+});
+
+router.post("/", (req, res) => {
+  const citta = "SELECT Nome FROM Citta WHERE Nome = ?;";
+  conn.query(citta, [req.citta], function (err, rows, fields) {
+    if (err) {
+      console.error("Errore nella query:", err);
+    }
+    if (!rows) {
+      const insCitta = "INSERT INTO Citta VALUES (NULL, ?);";
+      conn.query(insCitta, [req.citta], function (err, rows, fields) {
+        if (err) {
+          console.error("Errore nella query:", err);
+        }
+      });
+    }
   });
 
-  app.post('/submit', (req, res) => {
-    const username = req.body.username;
-
-    const qInsert = "INSERT INTO Utente (Username) VALUES ('${username}')";
-    
-    connection.qInsert(qInsert, (error, results) => {
-      if(error) {
-        console.error('Error inserting user: ', error);
-        return res.status(500).send('Error inserting user');
+  const inserimento =
+    "INSERT INTO Utente (Username, Email, Pwd, Nome, Cognome, Sesso, Ddn, IdCitta) VALUES (?, ?, ?, ?, ?, ?, ?, ?, (SELECT IdCitta FROM Citta WHERE Citta = ?));";
+  conn.query(
+    inserimento,
+    [
+      req.username,
+      req.email,
+      req.pwd,
+      req.nome,
+      req.cognome,
+      req.sesso,
+      req.ddn,
+      req.citta,
+    ],
+    function (err, rows, fields) {
+      if (err) {
+        console.error("Errore nella query:", err);
       }
 
-      return res.status(200).send('User insert successfully');
-    });
-  });
+      const user = rows[0];
+      log(rows);
 
-  
+      // Controllo se l'utente esiste e se la password coincide
+      if (!user || user.Pwd !== password) {
+        console.error("Credenziali errate");
+        return res.render("login", { errorMessage: "Credenziali errate" });
+      } else {
+        // Dopo la validazione dei dati dell'utente, reindirizzo l'utente alla pagina di home
+        req.session.user = username;
+        res.redirect("/home");
+      }
+    }
+  );
 });
 
 module.exports = router;
