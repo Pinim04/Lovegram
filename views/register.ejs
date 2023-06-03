@@ -29,37 +29,43 @@
         </script>
         <div class="page active" id="page1">
           <label for="nome">Username:</label>
-          <input type="text" id="username" required />
+          <input type="text" id="username" maxlength="25" minlength="2" required>
+          <div id="error2" class="hidden">campo non valido</div>
           <button type="button" onclick="procedi(2)">Avanti</button>
         </div>
 
         <div class="page" id="page2">
           <label for="cognome">Nome:</label>
-          <input type="text" id="nome" required />
+          <input type="text" id="nome" maxlength="25" minlength="2" required>
+          <div id="error3" class="hidden">campo non valido</div>
           <button type="button" onclick="procedi(3)">Avanti</button>
         </div>
-
+      
         <div class="page" id="page3">
-          <label for="data-nascita">Cognome:</label>
-          <input type="text" id="cognome" required />
+          <label for="data-nascita">Cognome</label>
+          <input type="text" id="cognome" maxlength="25" minlength="2" required>
+          <div id="error4" class="hidden">campo non valido</div>
           <button type="button" onclick="procedi(4)">Avanti</button>
         </div>
 
         <div class="page" id="page4">
           <label for="email">Email:</label>
-          <input type="email" id="email" required />
+          <input type="email" id="email" maxlength="30" min="10" required>
+          <div id="error5" class="hidden">campo non valido</div>
           <button type="button" onclick="procedi(5)">Avanti</button>
         </div>
 
         <div class="page" id="page5">
           <label for="password">Password:</label>
-          <input type="password" id="password" required />
+          <input type="password" id="password" maxlength="30" minlength="5" required>
+          <div id="error6" class="hidden">campo non valido</div>
           <button type="button" onclick="procedi(6)">Avanti</button>
         </div>
 
         <div class="page" id="page6">
           <label for="password">Conferma Password:</label>
-          <input type="password" id="conferma-password" required />
+          <input type="password" id="conferma-password" maxlength="30" minlength="5" required>
+          <div id="error7" class="hidden">campo non valido</div>
           <button type="button" onclick="procedi(7)">Avanti</button>
         </div>
 
@@ -75,13 +81,14 @@
 
         <div class="page" id="page8">
           <label for="citta">Città:</label>
-          <input type="text" id="citta" required />
+          <input type="text" id="citta" maxlength="30" minlength="5" required>
+          <div id="error9" class="hidden">campo non valido</div>
           <button type="button" onclick="procedi(9)">Avanti</button>
         </div>
 
         <div class="page" id="page9">
           <label for="ddn">Data di nascita:</label>
-          <input type="date" id="data-nascita" required />
+          <input type="date" id="data-nascita" min="1970-01-01" max="2023-12-31" required>
           <input type="submit" value="Registrati" />
         </div>
       </form>
@@ -91,12 +98,84 @@
       let currentPage = 1;
 
       function procedi(page) {
-        document
-          .getElementById(`page${currentPage}`)
-          .classList.remove("active");
-        currentPage = page;
-        document.getElementById(`page${currentPage}`).classList.add("active");
+        switch (page) {
+          case 2:
+            var username = document.getElementById("username").value;
+            if (username.length <= 2 || username.length >= 25) {
+              var error2 = document.getElementById("error2");
+              error2.classList.remove("hidden")
+            } else{
+              vaiavanti(page);
+            }
+            break;
+          case 3:
+            var nome = document.getElementById("nome").value;
+            if (nome.length <= 2 || nome.length >= 25) {
+              var error3 = document.getElementById("error3");
+              error3.classList.remove("hidden");
+            } else{
+              vaiavanti(page);
+            }
+            break;
+            case 4:
+            var cognome = document.getElementById("cognome").value;
+            if (cognome.length <= 2 || cognome.length >= 25) {
+              var error4 = document.getElementById("error4");
+              error4.classList.remove("hidden");
+            } else{
+              vaiavanti(page);
+            }
+            break;
+            case 5:
+            var email = document.getElementById("email").value;
+            if (email.length <= 10 || email.length >= 30) {
+              var error5 = document.getElementById("error5");
+              error5.classList.remove("hidden");
+            } else{
+              vaiavanti(page);
+            }
+            break;
+            case 6:
+            var password = document.getElementById("password").value;
+            if (password.length <= 5 || password.length >= 30) {
+              var error6 = document.getElementById("error6");
+              error6.classList.remove("hidden");
+            } else{
+              vaiavanti(page);
+            }
+            break;
+            case 7:
+            var password  = document.getElementById("password").value;
+            var cpassword = document.getElementById("conferma-password").value;
+            if (cpassword.length < 5 || cpassword.length > 30 || password != cpassword) {
+                var error7 = document.getElementById("error7");
+                error7.classList.remove("hidden"); 
+            } else{
+              vaiavanti(page);
+            }
+            break;
+            case 8:
+              vaiavanti(page);
+            break;
+            case 9:
+            var citta = document.getElementById("citta").value;
+            if (citta.length <= 5 || citta.length >= 30) {
+              var error9 = document.getElementById("error9");
+              error9.hidden.remove("hidden");
+            } else{
+              vaiavanti(page);
+            }
+            break;
+              default:
+            break; 
+        }        
       }
+
+      function vaiavanti(page) {
+          document.getElementById(`page${currentPage}`).classList.remove('active');
+          currentPage = page;
+          document.getElementById(`page${currentPage}`).classList.add('active');
+        }
 
       function selectFile() {
         document.getElementById("image-input").click();
