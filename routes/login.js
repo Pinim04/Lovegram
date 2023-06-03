@@ -25,19 +25,13 @@ router.get("/", function (req, res, next) {
 
 router.post("/", function (req, res, next) {
   //definizione varaibili username e password
-  const username = req.body.usr;
+  const email = req.body.usr;
   const password = req.body.pswd;
 
-  // Esecuzione dei controlli per la validazione
-  if (!username || !password) {
-    //window.alert("User pwd rischiesti");
-  }
-  log(username);
-
   // Query per ricercare l'username e la password all'interno del database
-  const query = "SELECT Username, Pwd FROM Utenti WHERE Username = ?;";
+  const query = "SELECT Email, Pwd FROM Utenti WHERE Email = ?;";
 
-  conn.query(query, [username], function (err, rows, fields) {
+  conn.query(query, [email], function (err, rows, fields) {
     if (err) {
       console.error("Errore nella query:", err);
     }
@@ -51,7 +45,7 @@ router.post("/", function (req, res, next) {
       return res.render("login", { errorMessage: "Credenziali errate" });
     } else {
       // Dopo la validazione dei dati dell'utente, reindirizzo l'utente alla pagina di home
-      req.session.user = username;
+      req.session.user = email;
       res.redirect("/home");
     }
   });
