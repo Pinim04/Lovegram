@@ -14,6 +14,19 @@ header {
   top: 10px;
   left: 10px;
   right: 10px;
+  height: 120px;
+}
+
+.headcont {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  margin-right: 100px;
+  margin-left: 100px;
+  border-radius: 30px;
 }
 
 /* Main content styles */
@@ -27,34 +40,70 @@ main {
   top: 50%;
   left: 0;
   right: 0;
-  transform: translateY(-50%);
+  transform: translateY(-40%);
 }
 
-.slick-slide div {
-  /* background-color: white; */
+.slick-slide div.image {
   max-height: 90%;
-  max-width: 300px;
+  max-width: 400px;
   min-height: 600px;
-  
   image-rendering: optimizeQuality;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
   overflow: hidden;
+
+  border-radius: 10px;
+}
+
+.shadow {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.text-container {
+  position: relative;
+  padding: 20px;
+  text-align: left;
+  color: white;
+  /* max-height: 40px; */
 }
 
 .logo {
-  /* Add styles for your webpage icon */
+  position: relative;
+  left: 40px;
+  width: 120px;
+  height: auto;
 }
 
-.icons {
-    display: flex;
+.button-container {
+  margin-right: 50px;
+
 }
 
-.user-icon {
-    /* Add styles for the user menu icon */
+.button-container button {
+  background-color: #ff2a6d;
+  color: white;
 }
 
-.matching-icon {
-    /* Add styles for the matching icon */
+input[type="text"], button {
+  display: inline;
+  padding: 16px;
+  border: none;
+  max-width: 250px;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.8);
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.03);
+  transition: all 0.2s ease-in-out;
+}
+
+input[type="submit"] {
+  background-color: #ff2a6d;
+  color: #fff;
+  border: none;
+  padding: 16px 24px;
+  border-radius: 8px;
+  cursor: pointer;
 }
