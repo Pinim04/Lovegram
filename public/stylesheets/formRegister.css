@@ -9,9 +9,12 @@ body {
 }
 
 img {
-  max-width: 100%;
-  height: auto;
-  margin-top: 0px;
+  max-width: 400px;
+  max-height: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  object-fit: cover;
+  z-index: 1;
 }
 
 .titolo{
@@ -65,7 +68,7 @@ input[type="text"], input[type="email"], input[type="date"] {
   font-size: 16px;
 }
 
-button {
+button,input[type="submit"]{
   display: block;
   width: 100%;
   padding: 10px;
@@ -75,4 +78,33 @@ button {
   border-radius: 4px;
   font-size: 16px;
   cursor: pointer;
+}
+
+
+.immagine {
+  display:none;
+}
+
+.bottone {
+  width: 105px;
+  height: 105px;
+  padding: 10px;
+  background-color: #ff2a6d;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  font-size: 50px;
+  cursor: pointer;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -113%);
+}
+
+.hidden {
+  display: none;
 }
