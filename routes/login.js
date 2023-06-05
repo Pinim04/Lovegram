@@ -24,11 +24,11 @@ router.get("/", function (req, res, next) {
 });
 
 router.post("/", function (req, res, next) {
-  //definizione varaibili username e password
+  // Getting form data
   const email = req.body.usr;
   const password = req.body.pswd;
 
-  // Query per ricercare l'username e la password all'interno del database
+  // Query for username and password in DB
   const query = "SELECT Email, Pwd FROM Utenti WHERE Email = ?;";
 
   conn.query(query, [email], function (err, rows, fields) {
@@ -39,12 +39,12 @@ router.post("/", function (req, res, next) {
     const user = rows[0];
     log(rows);
 
-    // Controllo se l'utente esiste e se la password coincide
+    // Check if user exists and password is correct
     if (!user || user.Pwd !== password) {
       console.error("Credenziali errate");
       return res.render("login", { errorMessage: "Credenziali errate" });
     } else {
-      // Dopo la validazione dei dati dell'utente, reindirizzo l'utente alla pagina di home
+      // Define of sesions var and redirect to home page
       req.session.user = email;
       res.redirect("/home");
     }

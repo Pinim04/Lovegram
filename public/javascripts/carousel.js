@@ -1,3 +1,4 @@
+// Slick-carousel init
 $(document).ready(function () {
   $(".carousel").slick({
     centerMode: true,

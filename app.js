@@ -30,6 +30,7 @@ app.use(
   })
 );
 
+// Definitions of route handlers
 var homeRouter = require("./routes/home");
 var loginRouter = require("./routes/login");
 var registerRouter = require("./routes/register");
@@ -45,12 +46,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-//connec reloader to middleware
+// connec reloader to middleware
 app.use(connectLiveReload());
 
+// Binding of routers to routes
 app.use("/login", loginRouter);
+app.use("/register", registerRouter);
 app.use(function (req, res, next) {
-  if (!req.session.usr && process.env.DEV != "true") {
+  if (!req.session.user && process.env.DEV != "true") {
     // User is not authenticated, redirect to the login page
     res.redirect("/login");
   } else {
@@ -60,7 +63,6 @@ app.use(function (req, res, next) {
 });
 app.use("/", homeRouter);
 app.use("/home", homeRouter);
-app.use("/register", registerRouter);
 app.use("/chat", chatRouter);
 
 // catch 404 and forward to error handler
